@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+import './App.css';
+import TodoForm from './components/TodoForm';
+
 function App() {
   const [todos, setTodos] = useState([]);
 
@@ -22,10 +25,7 @@ function App() {
   return (
     <div className='App'>
       <h1>Ma TodoList</h1>
-      {/* 3. Teste avec un bouton temporaire [cite: 41] */}
-      <button onClick={() => ajouterTodo("test")}>
-        Ajouter une tâche "Test"
-      </button>
+      <TodoForm onAjouter={ajouterTodo} />
 
       {/* Petit affichage pour t'aider à visualiser sans la console */}
 

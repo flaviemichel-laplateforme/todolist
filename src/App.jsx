@@ -37,7 +37,9 @@ function App() {
     setTodos(nouvelleListe);
   };
 
-
+  const nombreTotal = todos.length;
+  const nombresActives = todos.filter(t => !t.completed).length;
+  const nombresTerminees = todos.filter(t => t.completed).length;
 
   return (
     <div className='App'>
@@ -49,8 +51,16 @@ function App() {
         onToggle={toggleTodo}
         onSupprimer={supprimerTodo}
       />
+
+      <div className='stats'>
+        <p>Total : {nombreTotal} </p>
+        <p>Actives : {nombresActives} </p>
+        <p>Terminées : {nombresTerminees} </p>
+      </div>
     </div>
   );
+
+
 
 }
 

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import TodoFilter from './components/TodoFilter';
 
 
 function App() {
@@ -58,8 +59,13 @@ function App() {
       <h1>Ma TodoList</h1>
       <TodoForm onAjouter={ajouterTodo} />
 
+      <TodoFilter
+        filtre={filtre}
+        setFiltre={setFiltre}
+      />
+
       <TodoList
-        todos={todos}
+        todos={getTodosFIltres()}
         onToggle={toggleTodo}
         onSupprimer={supprimerTodo}
       />

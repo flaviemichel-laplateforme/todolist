@@ -1,0 +1,29 @@
+.filtres {
+    margin-bottom: 20px;
+    /* On peut centrer les boutons si on veut */
+    display: flex;
+    gap: 10px;
+}
+
+.filtres button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: rgb(126, 125, 125);
+    cursor: pointer;
+    border-radius: 4px;
+    /* Un peu plus moderne */
+    transition: all 0.2s;
+    /* Petite animation sympa */
+}
+
+.filtres button:hover {
+    background-color: #7b8498;
+}
+
+/* Classe active (Étape 3.2 du PDF) */
+.filtres button.actif {
+    background-color: #2C5AA0;
+    /* Bleu professionnel */
+    color: white;
+    border-color: #2C5AA0;
+}

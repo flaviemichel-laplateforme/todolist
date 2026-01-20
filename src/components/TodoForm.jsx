@@ -6,7 +6,7 @@ function TodoForm({ onAjouter }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (inputValue.trim === "") {
+        if (inputValue.trim() === "") {
             return;
         }
 

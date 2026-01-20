@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import './App.css';
 import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+import TodoItem from './components/TodoItem';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -17,23 +19,29 @@ function App() {
     const nouvelleListe = [...todos, nouveauTodo];
     setTodos(nouvelleListe);
 
-    console.log("Liste mise à jour:", nouvelleListe);
+
   };
 
-  console.log("Etat actuel (todos) :", todos);
+  const toggleTodo = (id) => {
+    console.log("Toggle todo:", id);
+  };
+
+  const supprimerTodo = (id) => {
+    console.log("Supprimer todo:", id);
+  };
+
+
 
   return (
     <div className='App'>
       <h1>Ma TodoList</h1>
       <TodoForm onAjouter={ajouterTodo} />
 
-      {/* Petit affichage pour t'aider à visualiser sans la console */}
-
-      <ul>
-        {todos.map(t => (
-          <li key={t.id}>{t.text} (ID: {t.id})</li>
-        ))}
-      </ul>
+      <TodoList
+        todos={todos}
+        onToggle={toggleTodo}
+        onSupprimer={supprimerTodo}
+      />
     </div>
   );
 

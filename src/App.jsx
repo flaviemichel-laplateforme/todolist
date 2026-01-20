@@ -3,10 +3,11 @@ import { useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
-import TodoItem from './components/TodoItem';
+
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [filtre, setFiltre] = useState('toutes');
 
   const ajouterTodo = (text) => {
 
@@ -35,6 +36,17 @@ function App() {
   const supprimerTodo = (id) => {
     const nouvelleListe = todos.filter(todo => todo.id !== id);
     setTodos(nouvelleListe);
+  };
+
+  const getTodosFIltres = () => {
+    switch (filtre) {
+      case 'actives':
+        return todos.filter(t => !t.completed);//Garde celle non terminées
+      case 'terminees':
+        return todos.filter(t => t.completed);
+      default:
+        return todos;//Toutes
+    }
   };
 
   const nombreTotal = todos.length;

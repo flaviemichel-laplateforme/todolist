@@ -1,14 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './App.css';
+
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import TodoFilter from './components/TodoFilter';
+import DeleteButton from './components/DeleteButton';
 
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const sauvegardes = localStorage.getItem('todos');
+    return sauvegardes ? JSON.parse(sauvegardes) : [];
+  });
+
   const [filtre, setFiltre] = useState('toutes');
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+
 
   const ajouterTodo = (text) => {
 
@@ -39,7 +51,13 @@ function App() {
     setTodos(nouvelleListe);
   };
 
-  const getTodosFIltres = () => {
+  const toutSupprimer = () => {
+    if (window.confirm("Voulez-vous vraiment supprimer toutes les tâches?")) {
+      setTodos([]);
+    }
+  };
+
+  const getTodosFiltres = () => {
     switch (filtre) {
       case 'actives':
         return todos.filter(t => !t.completed);//Garde celle non terminées
@@ -65,7 +83,7 @@ function App() {
       />
 
       <TodoList
-        todos={getTodosFIltres()}
+        todos={getTodosFiltres()}
         onToggle={toggleTodo}
         onSupprimer={supprimerTodo}
       />
@@ -75,6 +93,8 @@ function App() {
         <p>Actives : {nombresActives} </p>
         <p>Terminées : {nombresTerminees} </p>
       </div>
+
+      <DeleteButton onClick={toutSupprimer} />
     </div>
   );
 

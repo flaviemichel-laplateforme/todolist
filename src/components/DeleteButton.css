@@ -1,0 +1,20 @@
+/* src/components/DeleteButton.css */
+.btn-delete-all {
+    margin-top: 15px;
+    background-color: #dc3545;
+    /* Rouge standard */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    width: 100%;
+    /* Prend toute la largeur ou adaptable selon tes goûts */
+}
+
+.btn-delete-all:hover {
+    background-color: #c82333;
+    /* Rouge un peu plus foncé au survol */
+}

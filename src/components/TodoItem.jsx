@@ -8,7 +8,7 @@ function TodoItem({ todo, onToggle, onSupprimer }) {
                 checked={todo.completed}
                 onChange={() => onToggle(todo.id)}
             />
-            <span>
+            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
                 {todo.text}
             </span>
 

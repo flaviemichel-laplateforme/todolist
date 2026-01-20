@@ -23,11 +23,18 @@ function App() {
   };
 
   const toggleTodo = (id) => {
-    console.log("Toggle todo:", id);
+    const nouvelleListe = todos.map(todo => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    setTodos(nouvelleListe);
   };
 
   const supprimerTodo = (id) => {
-    console.log("Supprimer todo:", id);
+    const nouvelleListe = todos.filter(todo => todo.id !== id);
+    setTodos(nouvelleListe);
   };
 
 
